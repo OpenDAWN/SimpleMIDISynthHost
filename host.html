@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML>
+<html lang="en"
+	  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Simple MIDI Synth Host</title>
+	<link href="styleSheet.css" media="all" rel="stylesheet" type="text/css" />
+	<!-- Javascript files are included at the end of the body element -->
+</head>
+<body >
+	<div id="appDiv" class="app">
+		<table style="width:400px">
+			<tr>
+				<td><span class="boldTitle">Simple MIDI Synth Host</span></td>
+				<td style="text-align:right"><input class="smallButton" type="button" value="GitHub" style:"width:80px" onclick="WebMIDI.host.gitHubButtonClick()" /></td>
+			</tr>
+		</table>
+		<span>This is a very simple demo, showing how Chris Wilson's <a href="https://webaudiodemos.appspot.com/midi-synth/index.html" target="_blank">MIDI synth</a> can be used in a Web Audio 
+		project. This is the version of the synth I made for my <a href="https://github.com/notator/WebMIDISynthHost" target="_blank">WebMIDISynthHost</a> project.</span>
+		<ol style="margin:0">
+		<li>
+			Copy the files in the WebMIDI and cwMIDISynth folders to the project.
+		</li>
+		<li>
+			Call the synth's constructor and its init() function.
+		</li>
+		<li>
+			Send it MIDI messages from your own GUI	using the synth.send(... ) function.
+			The messages that can be sent are declared in the synth's <em>controls</em> attribute.
+		</li>
+		</ol>	
+		<hr />
+		<span>To use this demo, hover your mouse over these coloured areas.</span>
+
+		<table style="width:400px">
+			<tr onmouseover="WebMIDI.host.doMouseOver(event)" onmouseout="WebMIDI.host.doMouseOut(event)" >
+				<td class="panel" id="64" style="background-color:red;" />
+				<td class="panel" id="66" style="background-color:orange;" />
+				<td class="panel" id="68" style="background-color:yellow;" />
+				<td class="panel" id="70" style="background-color:green" />
+				<td class="panel" id="72" style="background-color:blue;" />
+				<td class="panel" id="74" style="background-color:blueviolet;" />
+				<td class="panel" id="76" style="background-color:violet;" />
+				<td class="panel" id="78" style="background-color:tomato;" />
+			</tr>
+		</table>
+	</div>
+
+	<script src="WebMIDI/namespace.js" type="text/javascript"></script>
+	<script src="WebMIDI/constants.js" type="text/javascript"></script>
+	<script src="WebMIDI/utilities.js" type="text/javascript"></script>
+
+	<script src="cwMIDISynth/waveShaper.js" type="text/javascript"></script>
+	<script src="cwMIDISynth/cwMIDISynthCore.js" type="text/javascript"></script>
+	<script src="cwMIDISynth/cwConstants.js" type="text/javascript"></script>
+	<script src="cwMIDISynth/cwMIDISynth.js" type="text/javascript"></script>
+
+	<script src="host.js" type="text/javascript"></script>
+</body>
+</html>
+
