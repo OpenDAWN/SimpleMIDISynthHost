@@ -1,4 +1,4 @@
-### Simple MIDI Synth Host
+###Simple MIDI Synth Host
 A very simple demonstration of how to include a Web MIDI Synth [1] in a Web application.<br />
 It can be tried out at http://james-ingram-act-two.de/open-source/SimpleMIDISynthHost/host.html.
 
