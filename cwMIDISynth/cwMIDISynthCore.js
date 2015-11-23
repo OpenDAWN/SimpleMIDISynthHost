@@ -672,7 +672,7 @@ WebMIDI.cwMIDISynthCore = (function(window)
 
 		if (!isMobile) {
 			var irRRequest = new XMLHttpRequest();			
-			irRRequest.open("GET", "synths/non-standard/cwMIDISynth/sounds/irRoom.wav", true);
+			irRRequest.open("GET", "cwMIDISynth/sounds/irRoom.wav", true);
 			irRRequest.responseType = "arraybuffer";
 			irRRequest.onload = function()
 			{
