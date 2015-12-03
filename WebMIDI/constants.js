@@ -8,8 +8,8 @@
  *  I think this could be a standardized file. The CONTROL section needs to be completed.
  */
 
-/*jslint bitwise: false, nomen: false, plusplus: false, white: true */
-/*global WebMIDI: false,  window: false,  document: false, performance: false, console: false, alert: false, XMLHttpRequest: false */
+/*jslint bitwise, white */
+/*global WebMIDI */
 
 WebMIDI.namespace('WebMIDI.constants');
 
@@ -20,7 +20,6 @@ WebMIDI.constants = (function()
     COMMAND = {},
     REAL_TIME = {},
     CONTROL = {},
-	CUSTOMCONTROL = {},
     SYSTEM_EXCLUSIVE = {},
 	DEFAULT = {},
 
@@ -99,7 +98,6 @@ WebMIDI.constants = (function()
         COMMAND: COMMAND,
         REAL_TIME: REAL_TIME,
         CONTROL: CONTROL,
-        CUSTOMCONTROL: CUSTOMCONTROL,
         SYSTEM_EXCLUSIVE: SYSTEM_EXCLUSIVE,
         DEFAULT: DEFAULT,
         isRealTimeStatus: isRealTimeStatus,
@@ -108,7 +106,7 @@ WebMIDI.constants = (function()
 
     Object.defineProperty(COMMAND, "NOTE_OFF", { value: 0x80, writable: false });
     Object.defineProperty(COMMAND, "NOTE_ON", { value: 0x90, writable: false });
-    Object.defineProperty(COMMAND, "CUSTOMCONTROL_CHANGE", { value: 0xA0, writable: false }); // was AFTERTOUCH -- see utilities.js
+    Object.defineProperty(COMMAND, "AFTERTOUCH", { value: 0xA0, writable: false });
     Object.defineProperty(COMMAND, "CONTROL_CHANGE", { value: 0xB0, writable: false });
     Object.defineProperty(COMMAND, "PATCH_CHANGE", { value: 0xC0, writable: false });
     Object.defineProperty(COMMAND, "CHANNEL_PRESSURE", { value: 0xD0, writable: false });
@@ -137,17 +135,11 @@ WebMIDI.constants = (function()
     Object.defineProperty(REAL_TIME, "RESET", { value: 0xFF, writable: false });
 
     // CONTROL
-    // These are all I use for the moment (Feb. 2013).
+    // These are all I use for the moment (ji Feb. 2013).
     // This list could be easily be extended/completed.
 	// Note that I am currently only using the "coarse" versions of these controls
     Object.defineProperty(CONTROL, "BANK_SELECT", { value: 0, writable: false });
     Object.defineProperty(CONTROL, "MODWHEEL", { value: 1, writable: false });
-	/***********************************************************************************/
-	// Proposal: new control. slots 3 and 35 are undefined in the MIDI standard,
-	// so we could use them here for PITCHWHEEL_DEVIATION and PITCHWHEEL_DEVIATION_LO.
-	// See WebMIDI/utilities.js
-    Object.defineProperty(CONTROL, "PITCHWHEEL_DEVIATION", { value: 3, writable: false });
-	/***********************************************************************************/
     Object.defineProperty(CONTROL, "DATA_ENTRY_COARSE", { value: 6, writable: false });
     Object.defineProperty(CONTROL, "VOLUME", { value: 7, writable: false });
     Object.defineProperty(CONTROL, "PAN", { value: 10, writable: false });
@@ -165,12 +157,6 @@ WebMIDI.constants = (function()
     Object.defineProperty(CONTROL, "ALL_CONTROLLERS_OFF", { value: 121, writable: false });
     Object.defineProperty(CONTROL, "ALL_NOTES_OFF", { value: 123, writable: false });
 
-	// CUSTOMCONTROL
-	// These two values are reserved for custom controls that set Aftertouch (see utilities.js)
-	// Other custom controls can be freely defined in the range [0..125].
-    Object.defineProperty(CUSTOMCONTROL, "AFTERTOUCH_KEY", { value: 126, writable: false });
-    Object.defineProperty(CUSTOMCONTROL, "AFTERTOUCH_PRESSURE", { value: 127, writable: false });
-
     // SYSTEM_EXCLUSIVE
     Object.defineProperty(SYSTEM_EXCLUSIVE, "START", { value: 0xF0, writable: false });
     Object.defineProperty(SYSTEM_EXCLUSIVE, "END", { value: 0xF7, writable: false });
@@ -186,7 +172,6 @@ WebMIDI.constants = (function()
 	// These values should be set both in the HI-byte controller, and in the LO-byte
 	// controller, if used.
     Object.defineProperty(DEFAULT, "GENERIC_MIDI", { value: 0, writable: false });
-    Object.defineProperty(DEFAULT, "PITCHWHEEL_DEVIATION", { value: 2, writable: false });
     Object.defineProperty(DEFAULT, "VOLUME", { value: 100, writable: false });
     Object.defineProperty(DEFAULT, "PAN", { value: 64, writable: false });
     Object.defineProperty(DEFAULT, "EXPRESSION", { value: 127, writable: false });
